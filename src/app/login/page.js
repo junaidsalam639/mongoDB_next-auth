@@ -1,14 +1,20 @@
 'use client'
 
 import { signIn } from "next-auth/react";
+import { useRouter } from "next/navigation";
 import { useState } from "react"
+
 const Login = () => {
+  const router = useRouter()
     const [email , setEmail] = useState('');
     const [password , setPassword] = useState('');
     const loginUser = async () => {
         const result = await signIn('credentials' , {
             email , password , redirect : false
-        });
+          });
+          if(result.ok){
+            router.push('/')
+          }
         console.log('result---->' , result);
     }
   return (

@@ -1,5 +1,6 @@
 import CredentialsProvider from "next-auth/providers/credentials";
 import NextAuth from "next-auth"
+import axios from "axios";
 
 const handler = NextAuth({
     providers: [
@@ -10,8 +11,12 @@ const handler = NextAuth({
                 password: { label: "Password", type: "password" }
             },
             async authorize(credentials, req) {
-                console.log('authorize---->' , credentials);
-                const user = { id: "1", name: "J Smith", email: "jsmith@example.com" }
+                console.log('authorize---->', credentials);
+                const user = await axios.post(`${BASED_URL}/user/login`, {
+                    "email": credentials.email,
+                    "password": credentials.password,
+                });
+                console.log(user);
                 if (user) {
                     return user
                 } else {
@@ -20,8 +25,20 @@ const handler = NextAuth({
             }
         })
     ],
-    pages : {
-        signIn : '/login'
+    pages: {
+        signIn: '/login'
+    },
+    callbacks: {
+        jwt: async ({ token, user }) => {
+            console.log('jwt console---->', token, user);
+            if (user) {
+                return {
+                    jwt: user.token,
+                    ...user,
+                };
+            }
+            return token;
+        },
     }
 })
 
