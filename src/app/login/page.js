@@ -1,5 +1,4 @@
 'use client'
-
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useState } from "react"
@@ -15,7 +14,7 @@ const Login = () => {
           if(result.ok){
             router.push('/')
           }
-        console.log('result---->' , result);
+        console.log('results---->' , result);
     }
   return (
     <div className="h-screen w-72 mx-auto">

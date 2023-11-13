@@ -16,7 +16,7 @@ const handler = NextAuth({
                     "email": credentials.email,
                     "password": credentials.password,
                 });
-                console.log(user);
+                console.log('user----->',user);
                 if (user) {
                     return user
                 } else {
