@@ -1,24 +1,21 @@
 import CredentialsProvider from "next-auth/providers/credentials";
 import NextAuth from "next-auth"
 import axios from "axios";
+import BASED_URL from "@/constant";
 
 const handler = NextAuth({
     providers: [
         CredentialsProvider({
             name: "Credentials",
-            credentials: {
-                email: { label: "Email", type: "text", placeholder: "jsmith" },
-                password: { label: "Password", type: "password" }
-            },
             async authorize(credentials, req) {
                 console.log('authorize---->', credentials);
                 const user = await axios.post(`${BASED_URL}/user/login`, {
                     "email": credentials.email,
                     "password": credentials.password,
                 });
-                console.log('user----->',user);
+                console.log('user----->', user.data);
                 if (user) {
-                    return user
+                    return user.data
                 } else {
                     return null
                 }
@@ -30,7 +27,7 @@ const handler = NextAuth({
     },
     callbacks: {
         jwt: async ({ token, user }) => {
-            console.log('jwt console---->', token, user);
+            // console.log('jwt console---->', token, user);
             if (user) {
                 return {
                     jwt: user.token,

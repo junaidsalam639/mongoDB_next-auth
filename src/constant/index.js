@@ -1,4 +1,4 @@
-const BASED_URL = `https://faithful-wear-pig.cyclic.app/`
+const BASED_URL = `https://long-blue-hare-kilt.cyclic.app`
 
 export default BASED_URL
 

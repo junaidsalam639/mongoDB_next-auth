@@ -14,8 +14,12 @@ const Login = () => {
           if(result.ok){
             router.push('/')
           }
+          else{
+            alert('rhjehrjwe')
+          }
         console.log('result---->' , result);
     }
+    
   return (
     <div className="h-screen w-72 mx-auto">
       <h1 className="text-3xl font-bold text-gray-400">Login</h1>

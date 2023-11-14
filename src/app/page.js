@@ -1,16 +1,25 @@
 import Navbar from "@/components/Navbar";
-import getBlog from "@/lib/blogFecth"
+import getBlog from "@/lib/userFecth"
 
 
 export default async function Home() {
   const blog = await getBlog();
-  console.log(blog);
   return (
     <>
       <Navbar />
-      <main className="flex flex-col items-center justify-between p-24">
+      <main className="flex flex-col">
         <div>
-          <h2>{blog.message}</h2>
+          {
+            blog?.data?.map((data , index) => {
+              return (
+                <div className="bg-indigo-700 m-5 p-4 rounded-md" key={index}>
+                  <h2 className="text-white">Name : {data.username}</h2>
+                  <h2 className="text-white">Email : {data.email}</h2>
+                  <h2 className="text-white">Password : {data.password}</h2>
+                </div>
+              )
+            })
+          }
         </div>
       </main>
     </>
