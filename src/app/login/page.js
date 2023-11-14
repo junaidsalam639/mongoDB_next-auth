@@ -14,7 +14,7 @@ const Login = () => {
           if(result.ok){
             router.push('/')
           }
-        console.log('results---->' , result);
+        console.log('result---->' , result);
     }
   return (
     <div className="h-screen w-72 mx-auto">
