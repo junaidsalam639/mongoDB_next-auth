@@ -1,4 +1,27 @@
+'use client'
+import BASED_URL from "@/constant";
+import { useState } from "react";
+
 const page = () => {
+  const [title , setTitle] = useState('');
+  const [desc , setDesc] = useState('');
+  const handlerBtn = async () => {
+    if(!title || !desc){
+       alert('Title And Description Are Required?');
+    }
+    try{
+      const res = await fetch(`${BASED_URL}/blog` , {
+        method : 'POST',
+        headers : {
+          'Content-type' : 'applications/json',
+        },
+        body : JSON.stringify({title , desc}),
+      });
+      alert(res)
+    }catch(err){
+      console.log(err);
+    }
+  }
   return (
     <div className="bg-indigo-600 w-full h-screen">
         <div className="w-full px-10 py-4">
@@ -6,13 +29,13 @@ const page = () => {
         </div>
        <div>
           <div className="w-full px-10 mt-8">
-            <input type="text" placeholder="enter your title..." className="w-full mx-auto container border-2 border-indigo-400 px-5 py-2 rounded-sm" />
+            <input type="text" placeholder="enter your title..." className="w-full mx-auto container border-2 border-indigo-400 px-5 py-2 rounded-sm" onChange={(e) => setTitle(e.target.value)} value={title} />
           </div>
           <div className="w-full px-10 mt-8">
-            <input type="text" placeholder="enter your Description..." className="w-full mx-auto container border-2 border-indigo-400 px-5 py-2 h-32 rounded-sm" />
+            <input type="text" placeholder="enter your Description..." className="w-full mx-auto container border-2 border-indigo-400 px-5 py-2 h-32 rounded-sm" onChange={(e) => setDesc(e.target.value)} value={desc} />
           </div>
           <div className="w-full px-10 mt-8">
-            <button className="bg-indigo-400 px-4 py-2 text-white hover:bg-indigo-300">Add Blog</button>
+            <button onClick={handlerBtn} className="bg-indigo-400 px-4 py-2 text-white hover:bg-indigo-300">Add Blog</button>
           </div>
         </div>  
     </div>

@@ -4,7 +4,7 @@ import Link from "next/link";
 
 const Navbar = () => {
   const { data: session } = useSession();
-  console.log('session----->', session?.user);
+  console.log('session----->', session);
 
   return (
     <div className="flex flex-row justify-between items-center w-full bg-indigo-600 px-4 py-6">

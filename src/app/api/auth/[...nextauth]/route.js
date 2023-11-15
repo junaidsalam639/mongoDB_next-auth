@@ -27,7 +27,7 @@ const handler = NextAuth({
     },
     callbacks: {
         jwt: async ({ token, user }) => {
-            console.log('jwt console---->', token, user);
+            console.log('jwt console---->', token , user);
             if (user) {
                 return {
                     jwt: user.token,
