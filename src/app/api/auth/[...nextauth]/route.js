@@ -30,8 +30,8 @@ const handler = NextAuth({
             console.log('jwt console---->', token , user);
             if (user) {
                 return {
-                    jwt: user.token,
-                    ...user,
+                    jwt: token,
+                     ...user
                 };
             }
             return token;
