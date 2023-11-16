@@ -9,18 +9,6 @@ const page = () => {
     if(!title || !desc){
        alert('Title And Description Are Required?');
     }
-    try{
-      const res = await fetch(`${BASED_URL}/blog` , {
-        method : 'POST',
-        headers : {
-          'Content-type' : 'applications/json',
-        },
-        body : JSON.stringify({title , desc}),
-      });
-      alert(res)
-    }catch(err){
-      console.log(err);
-    }
   }
   return (
     <div className="bg-indigo-600 w-full h-screen">

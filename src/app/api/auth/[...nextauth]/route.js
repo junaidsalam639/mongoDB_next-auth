@@ -27,17 +27,16 @@ const handler = NextAuth({
     },
     callbacks: {
         jwt: async ({ token, user }) => {
-            console.log('jwt console---->', token , user);
+            console.log('jwt console user---->', token , user);
             if (user) {
                 return {
-                    jwt: token,
-                     ...user
+                    user: user
                 };
             }
-            return token;
+            return user;
         },
     }
-})
+});
 
 export { handler as GET, handler as POST }
 

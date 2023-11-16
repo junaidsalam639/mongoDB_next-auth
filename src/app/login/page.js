@@ -15,7 +15,7 @@ const Login = () => {
             router.push('/')
           }
           else{
-            alert('rhjehrjwe')
+            alert('User Not Exists')
           }
         console.log('result---->' , result);
     }
