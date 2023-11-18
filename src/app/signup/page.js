@@ -24,8 +24,6 @@ const Signup = () => {
       
             console.log('Response Status:', response.status);
             console.log('Response Data:', response.data);
-      
-            // Assuming your server returns a success message
             alert('User registered successfully!');
           }
         } catch (error) {
