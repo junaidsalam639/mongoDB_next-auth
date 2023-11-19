@@ -17,7 +17,7 @@ const Login = () => {
           else{
             alert('User Not Exists')
           }
-        console.log('result---->' , result);
+        console.log('result----->' , result);
     }
     
   return (
