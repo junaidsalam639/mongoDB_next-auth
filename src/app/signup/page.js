@@ -9,7 +9,6 @@ const Signup = () => {
   const [user, setUser] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
   const SignupUser = async () => {
     try {
       if (!user || !password || !email) {
@@ -40,7 +39,6 @@ const Signup = () => {
       <input type="email" placeholder="email" className="outline-none px-2 my-2 py-2 border-2 border-gray-400 rounded-md" onChange={(e) => setEmail(e.target.value)} value={email} /> <br />
       <input type="password" placeholder="password" className="outline-none px-2 my-2 py-2 border-2 border-gray-400 rounded-md" onChange={(e) => setPassword(e.target.value)} value={password} /> <br />
       <button className="bg-gray-400 px-4 py-2 rounded-md text-white" onClick={SignupUser}>Signup</button>
-      {errorMessage && <p className="text-red-500">{errorMessage}</p>}
     </div>
   )
 }
