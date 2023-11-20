@@ -1,11 +1,20 @@
 'use client'
-import React , { useState } from "react";
+import React , { useState , useEffect } from "react";
 import axios from 'axios'; 
 import BASED_URL from "@/constant";
 
 const AddBlogPage = () => {
   const [title, setTitle] = useState('');
   const [desc, setDesc] = useState('');
+  const [userId, setUserId] = useState(''); 
+
+  useEffect(() => {
+    const fetchUserId = async () => {
+      const id = await fetchUserIdFunction();
+      setUserId(id);
+    };
+    fetchUserId();
+  }, []);
 
   const handlerBtn = async () => {
     try {
@@ -16,6 +25,7 @@ const AddBlogPage = () => {
       const postData = {
         title: title,
         desc: desc,
+        userId: userId,
       };
 
       const response = await axios.post(`${BASED_URL}/blog`, postData);

@@ -1,6 +1,6 @@
 import BASED_URL from "@/constant"
 
-async function getBlog() {
+async function userFecth() {
     const res = await fetch(`${BASED_URL}/user`);
    
     if (!res.ok) {
@@ -10,5 +10,5 @@ async function getBlog() {
     return res.json()
   }
 
-  export default getBlog
+  export default userFecth
 
